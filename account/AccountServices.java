@@ -23,4 +23,13 @@ public class AccountServices {
         }
         return 3;
     }
+
+    public boolean verificarUsuario (String usuario) {
+        for (User cadaUsuario : listaUsuarios) {
+            if (cadaUsuario.getUsuario().equals(usuario)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

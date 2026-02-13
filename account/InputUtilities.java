@@ -46,4 +46,18 @@ public class InputUtilities {
             }
         }
     }
+
+    public static String apenasNomes(String message) {
+        while (true) {
+            System.out.println(message);
+
+            String entrada = scanner.nextLine();
+
+            if (entrada.matches("[a-zA-Z]+")) {
+                return entrada;
+            }else {
+                System.err.println("NOME INVALIDO, APENAS LETRAS.");
+            }
+        }
+    }
 }

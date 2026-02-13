@@ -9,11 +9,11 @@ public class AccountController {
     AccountServices accountServices = new AccountServices();
     OnePieceGameController gameController = new OnePieceGameController();
     Scanner scanner = new Scanner(System.in);
-
+    int escolhaMenu = 10;
 
     public void accountOptions () {
         do {
-            int escolhaMenu = InputUtilities.readIntNumbers("Digite 1 para criar conta ou 2 para Logar:");
+            escolhaMenu = InputUtilities.readIntNumbers("Digite 1 para criar conta ou 2 para Logar, 3 para Fechar o Client:");
 
             switch (escolhaMenu) {
                 case 1:
@@ -25,21 +25,25 @@ public class AccountController {
                 default:
                     System.out.println("Apenas duas opções disponiveis");
             }
-        }while (true);
+        }while (escolhaMenu != 3);
     }
 
     public void createAccount() {
         System.out.println("Digite o usuario:");
         String usuario = scanner.nextLine();
-        System.out.println("Digite sua senha:");
-        String senha = scanner.nextLine();
-        String cpf = InputUtilities.readCPF("Digite seu cpf:");
+        if (accountServices.verificarUsuario(usuario)) {
+            System.out.println("Digite sua senha:");
+            String senha = scanner.nextLine();
+            String cpf = InputUtilities.readCPF("Digite seu cpf:");
 
-        User user = new User(usuario,senha,cpf);
-        userRepository.salvarUsuario(user);
-        accountServices.adicionarUsuario(user);
+            User user = new User(usuario,senha,cpf);
+            userRepository.salvarUsuario(user);
+            accountServices.adicionarUsuario(user);
 
-        System.out.println("Conta criada com sucesso!");
+            System.out.println("Conta criada com sucesso!");
+        }else {
+            System.err.println("Usuario ja em uso.");
+        }
     }
 
     public void accountLogin() {
