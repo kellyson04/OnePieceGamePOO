@@ -35,13 +35,18 @@ public class Personagem implements Ataque{
     @Override
     public void atacar() {
         if (this.funcao == Funcao.Pirata) {
-            System.out.println(this.nome + "O pirata esta atacando com");
+            System.out.println(this.nome + " O Pirata esta atacando!");
+        }else if (this.funcao == Funcao.Marinheiro) {
+            System.out.println(this.nome + " O Marinheiro esta atacando!");
         }
     }
 
     @Override
-    public void habilidadeEspecial() {
-        System.out.println(this.nome + "");
+    public void habilidadeEspecial(String habilidadeEspecial) {
+        if (habilidadeEspecial.length() <= 1) {
+            System.err.println("NOME INVALIDO,SEM CARACTERES ENCONTRADOS. ");
+        }
+        System.out.println(this.nome + " Usou " + habilidadeEspecial);
     }
 
 }

@@ -2,5 +2,5 @@ package OnePieceGame;
 
 public interface Ataque {
     void atacar();
-    void habilidadeEspecial();
+    void habilidadeEspecial(String poderzinho);
 }

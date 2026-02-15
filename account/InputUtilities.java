@@ -53,7 +53,7 @@ public class InputUtilities {
 
             String entrada = scanner.nextLine();
 
-            if (entrada.matches("[a-zA-Z]+")) {
+            if (entrada.matches("[a-zA-Z ]+")) {
                 return entrada;
             }else {
                 System.err.println("NOME INVALIDO, APENAS LETRAS.");
