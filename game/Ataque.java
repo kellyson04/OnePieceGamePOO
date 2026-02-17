@@ -1,4 +1,4 @@
-package OnePieceGame;
+package OnePieceGame.game;
 
 public interface Ataque {
     void atacar();

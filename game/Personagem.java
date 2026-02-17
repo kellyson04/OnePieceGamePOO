@@ -1,9 +1,13 @@
-package OnePieceGame;
+package OnePieceGame.game;
 
-public class Personagem implements Ataque{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Personagem implements Ataque {
     private String nome;
     private Funcao funcao;
     private String nomeFruta;
+    private List<String> habilidadesEspeciais = new ArrayList<>();
 
     public Personagem(String nome, Funcao funcao) {
         this.nome = nome;
@@ -30,6 +34,14 @@ public class Personagem implements Ataque{
 
     public void setFuncao(Funcao novaFuncao) {
         this.funcao = novaFuncao;
+    }
+
+    public List<String> getHabilidadesEspeciais() {
+        return this.habilidadesEspeciais;
+    }
+
+    public void adicionarHabilidadeEspecial(String nomeHabilidade) {
+        this.habilidadesEspeciais.add(nomeHabilidade);
     }
 
     @Override

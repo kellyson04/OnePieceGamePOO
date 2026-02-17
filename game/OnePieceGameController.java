@@ -1,4 +1,4 @@
-package OnePieceGame;
+package OnePieceGame.game;
 
 import OnePieceGame.account.InputUtilities;
 
@@ -34,7 +34,7 @@ public class OnePieceGameController {
         switch (temAkumaNoMi) {
             case 1:
                 String nomeAkumaNoMi = InputUtilities.apenasNomes("Qual nome da sua Akuma no Mi:");
-                Personagem novoPirataComFruta = new Personagem(nomePersonagemPirata,Funcao.Pirata,nomeAkumaNoMi);
+                Personagem novoPirataComFruta = new Personagem(nomePersonagemPirata, Funcao.Pirata,nomeAkumaNoMi);
                 repository.salvarPersonagem(novoPirataComFruta);
                 service.adicionarPersonagemNaLista(novoPirataComFruta);
                 inicioJornada(novoPirataComFruta);
@@ -76,14 +76,49 @@ public class OnePieceGameController {
 
         String nomeHabilidadeEspecial = InputUtilities.apenasNomes("Para começar a jornada preciso que voce digite o nome do golpe especial inicial que ira utilizar");
 
-        service.escolherAtaque(personagem,nomeHabilidadeEspecial);
+        personagem.adicionarHabilidadeEspecial(nomeHabilidadeEspecial);
+        System.out.println("Habilidade salva com sucesso!");
 
+        int escolhaSpawnMapa = InputUtilities.readIntNumbers("Deseja começar a sua jornada por qual parte do mapa -> 1 - East Blue, 2 -> North Blue, 3 -> West Blue, 4 -> South Blue:");
+
+        switch (escolhaSpawnMapa) {
+            case 1:
+                eastBlue(personagem);
+                break;
+            case 2:
+                northBlue(personagem);
+                break;
+            case 3:
+                westBlue(personagem);
+                break;
+            case 4:
+                southBlue(personagem);
+                break;
+            default:
+                System.err.println("Apenas 4 opções Disponiveis no Mapa!");
+        }
+    }
+
+    public void eastBlue(Personagem personagem) {
+        System.out.println("Seja bem vindo ao East Blue!");
+    }
+
+    public void northBlue(Personagem personagem) {
+        System.out.println("Seja bem vindo ao North Blue!");
+    }
+
+    public void westBlue(Personagem personagem) {
+        System.out.println("Seja bem vindo ao West Blue!");
+    }
+
+    public void southBlue(Personagem personagem) {
+        System.out.println("Seja bem vindo ao South Blue!");
     }
 
     public void menuDeOpcoes() {
         int escolha = 10;
         do {
-            escolha = InputUtilities.readIntNumbers("1 Mudar nome do Personagem, 2 -> Mudar função (se tornar traira)");
+            escolha = InputUtilities.readIntNumbers("1 Mudar nome do Personagem, 2 -> Mudar função (se tornar traira),");
 
             switch (escolha) {
                 case 1:
@@ -92,8 +127,11 @@ public class OnePieceGameController {
                     if (service.mudarNome(nomeAtual,novoNome)) {
                         System.out.println("Troca efetuada com sucesso!");
                     }else {
-                        System.out.println("Nome inserido não corresponde com nossa lista de nomes.");
+                        System.err.println("Nome inserido não corresponde com nossa lista de nomes.");
                     }
+                    break;
+                case 2:
+
 
             }
         }while (escolha != 5);

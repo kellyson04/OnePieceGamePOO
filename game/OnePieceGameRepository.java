@@ -1,4 +1,4 @@
-package OnePieceGame;
+package OnePieceGame.game;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;

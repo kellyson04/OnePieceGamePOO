@@ -1,6 +1,6 @@
 package OnePieceGame.account;
 
-import OnePieceGame.OnePieceGameController;
+import OnePieceGame.game.OnePieceGameController;
 
 import java.util.Scanner;
 

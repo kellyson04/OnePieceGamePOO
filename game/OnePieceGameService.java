@@ -1,13 +1,13 @@
-package OnePieceGame;
+package OnePieceGame.game;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class OnePieceGameService {
     List <Personagem> listaPersonagens = new ArrayList<>();
-    List<String> ListaHabilidadesEspeciais = new ArrayList<>();
+    List<String> listaHabilidadesEspeciais = new ArrayList<>();
 
-    public void escolherAtaque(Ataque ataque,String nomeDaHabilidadeEspecial) {
+    public void escolherAtaque(Ataque ataque, String nomeDaHabilidadeEspecial) {
         ataque.atacar();
         ataque.habilidadeEspecial(nomeDaHabilidadeEspecial);
     }
@@ -24,6 +24,10 @@ public class OnePieceGameService {
             }
         }
         return false;
+    }
+
+    public void adicionarHabilidadeNaLista(String nomeDaHabilidade) {
+        listaHabilidadesEspeciais.add(nomeDaHabilidade);
     }
 
 
