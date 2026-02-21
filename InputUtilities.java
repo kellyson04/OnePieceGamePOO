@@ -1,4 +1,4 @@
-package OnePieceGame.account;
+package OnePieceGame;
 
 import java.util.Scanner;
 

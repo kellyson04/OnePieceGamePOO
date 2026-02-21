@@ -1,17 +1,18 @@
 package OnePieceGame.game;
 
-import OnePieceGame.account.InputUtilities;
+import OnePieceGame.InputUtilities;
+
 
 public class OnePieceGameController {
     OnePieceGameService service = new OnePieceGameService();
     OnePieceGameRepository repository = new OnePieceGameRepository();
     public void gameStarter() {
         System.out.println("Bem vindo ao nosso jogo :D !");
-        int choice = 0;
+        boolean continuar = true;
         do {
-            choice = InputUtilities.readIntNumbers("Deseja ser, 1 -> PIRATA, 2 - MARINHEIRO  3 - MENU DE OPÇÕES, 4 - SAIR");
+            int escolha = InputUtilities.readIntNumbers("Deseja ser, 1 -> PIRATA, 2 - MARINHEIRO  3 - MENU DE OPÇÕES, 4 - SAIR");
 
-            switch (choice) {
+            switch (escolha) {
                 case 1:
                     criarPersonagemPirata();
                     break;
@@ -21,13 +22,15 @@ public class OnePieceGameController {
                 case 3:
                     menuDeOpcoes();
                     break;
+                case 4:
+                    continuar = false;
                 default:
                     System.out.println("Apenas tres opções disponiveis no momento.");
             }
-        }while (choice != 4);
+        }while (continuar);
     }
 
-    public void criarPersonagemPirata() {
+    private void criarPersonagemPirata() {
         String nomePersonagemPirata = InputUtilities.apenasNomes("Insira o nome do seu Pirata:");
         int temAkumaNoMi = InputUtilities.readIntNumbers("Seu pirata ira possuir Akuma no Mi: 1 - Sim, 2 - Não");
 
@@ -50,7 +53,7 @@ public class OnePieceGameController {
         }
     }
 
-    public void criarPersonagemMarinheiro() {
+    private void criarPersonagemMarinheiro() {
         String nomePersonagemMarinheiro = InputUtilities.apenasNomes("Insira o nome do seu Marinhero");
         int temAkumaNoMi = InputUtilities.readIntNumbers("Seu Marinheiro ira possuir Akuma no Mi: 1 - Sim, 2 - Não");
 
@@ -71,7 +74,7 @@ public class OnePieceGameController {
         }
     }
 
-    public void inicioJornada(Personagem personagem) {
+    private void inicioJornada(Personagem personagem) {
         System.out.println("Nos primeiros leveis voce só tem direito a 1 ataque especial o resto sao ataques basicos.");
 
         String nomeHabilidadeEspecial = InputUtilities.apenasNomes("Para começar a jornada preciso que voce digite o nome do golpe especial inicial que ira utilizar");
@@ -99,26 +102,26 @@ public class OnePieceGameController {
         }
     }
 
-    public void eastBlue(Personagem personagem) {
-        System.out.println("Seja bem vindo ao East Blue!");
+    private void eastBlue(Personagem personagem) {
+        DialogosNPCS.dialogoAlvida(personagem);
     }
 
-    public void northBlue(Personagem personagem) {
-        System.out.println("Seja bem vindo ao North Blue!");
+    private void northBlue(Personagem personagem) {
+        DialogosNPCS.dialogoBellamy(personagem);
     }
 
-    public void westBlue(Personagem personagem) {
-        System.out.println("Seja bem vindo ao West Blue!");
+    private void westBlue(Personagem personagem) {
+        DialogosNPCS.dialogoCaponeBege(personagem);
     }
 
-    public void southBlue(Personagem personagem) {
-        System.out.println("Seja bem vindo ao South Blue!");
+    private void southBlue(Personagem personagem) {
+       DialogosNPCS.dialogoEustassKid(personagem);
     }
 
-    public void menuDeOpcoes() {
-        int escolha = 10;
+    private void menuDeOpcoes() {
+        boolean continuar = true;
         do {
-            escolha = InputUtilities.readIntNumbers("1 Mudar nome do Personagem, 2 -> Mudar função (se tornar traira),");
+            int escolha = InputUtilities.readIntNumbers("1 Mudar nome do Personagem, 2 -> Mudar função (se tornar traira),");
 
             switch (escolha) {
                 case 1:
@@ -131,12 +134,14 @@ public class OnePieceGameController {
                     }
                     break;
                 case 2:
-
+                    break;
+                case 3:
+                    continuar = false;
+                    break;
+                default:
+                    System.err.println("Opção não existente.");
 
             }
-        }while (escolha != 5);
+        }while (continuar);
     }
-
-
-
 }
