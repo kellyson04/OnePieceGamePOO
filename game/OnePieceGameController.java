@@ -54,7 +54,7 @@ public class OnePieceGameController {
     }
 
     private void criarPersonagemMarinheiro() {
-        String nomePersonagemMarinheiro = InputUtilities.apenasNomes("Insira o nome do seu Marinhero");
+        String nomePersonagemMarinheiro = InputUtilities.apenasNomes("Insira o nome do seu Marinheiro");
         int temAkumaNoMi = InputUtilities.readIntNumbers("Seu Marinheiro ira possuir Akuma no Mi: 1 - Sim, 2 - Não");
 
         switch (temAkumaNoMi) {
@@ -104,18 +104,42 @@ public class OnePieceGameController {
 
     private void eastBlue(Personagem personagem) {
         DialogosNPCS.dialogoAlvida(personagem);
+
+        InimigoNPC alvida = new InimigoNPC("Alvida",80," Esta preparando seu enorme machado ","Machado espinhoso");
+
+        SistemaCombate combate = new SistemaCombate();
+
+        combate.iniciarCombate(personagem,alvida);
     }
 
     private void northBlue(Personagem personagem) {
         DialogosNPCS.dialogoBellamy(personagem);
+
+        InimigoNPC bellamy = new InimigoNPC("Bellamy",90," Esta saltando de um lado para o outro ","Spring Hopper");
+
+        SistemaCombate combate = new SistemaCombate();
+
+        combate.iniciarCombate(personagem,bellamy);
     }
 
     private void westBlue(Personagem personagem) {
         DialogosNPCS.dialogoCaponeBege(personagem);
+
+        InimigoNPC caponeBege = new InimigoNPC("Capone Bege",95," Virou uma enorme fortaleza ","Big Father");
+
+        SistemaCombate combate = new SistemaCombate();
+
+        combate.iniciarCombate(personagem,caponeBege);
     }
 
     private void southBlue(Personagem personagem) {
        DialogosNPCS.dialogoEustassKid(personagem);
+
+       InimigoNPC eustassKid = new InimigoNPC("Eustass KID",99," Esta preparando seu canhão para te exterminar ","Damned PUUUNNKKKKKKKK");
+
+       SistemaCombate combate = new SistemaCombate();
+
+       combate.iniciarCombate(personagem,eustassKid);
     }
 
     private void menuDeOpcoes() {
